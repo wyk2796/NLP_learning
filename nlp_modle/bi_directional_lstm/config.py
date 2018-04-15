@@ -42,3 +42,19 @@ class Config(object):
 
     def set_clip_grad(self, value):
         self.clip_grad = value
+
+    def __copy__(self):
+        n = Config()
+        n.batch_size = self.batch_size
+        n.clip_grad = self.clip_grad
+
+        n.corpus_vocabulary_size = self.corpus_vocabulary_size
+        n.label_vocabulary_size = self.label_vocabulary_size
+        n.pos_vocabulary_size = self.pos_vocabulary_size
+
+        n.hidden_size = self.hidden_size
+        n.keep_prob = self.keep_prob
+        n.step_num = self.step_num
+        n.learning_rate = self.learning_rate
+        return n
+

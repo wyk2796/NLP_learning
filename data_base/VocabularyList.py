@@ -103,6 +103,7 @@ class Vocabulary(object):
                     except Exception as e:
                         print('Read line %s, Encounter Error %s' % (line, e.args))
         self.id2word = dict(zip(self.word2id.values(), self.word2id.keys()))
+        self.vocabulary_size = min([len(self.word2id), self.vocabulary_size])
 
 
 

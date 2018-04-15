@@ -4,3 +4,4 @@ nlp_modle/bi_directional_lstm/__pycache__/
 data_base/__pycache__/
 .idea/
 __pycache__/params.cpython-35.pyc
+evaluative_metrics/__pycache__/

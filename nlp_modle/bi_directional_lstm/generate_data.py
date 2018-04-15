@@ -25,9 +25,9 @@ class GenerateData(object):
         i_label = np.zeros((batch_num * batch_size, step_num), dtype=np.int32)
         i_sequence_length = np.zeros((batch_num * batch_size))
         for i in range(batch_num * batch_size):
-            t_corpus = np.zeros(step_num, dtype=np.int32)
-            t_pos = np.zeros(step_num, dtype=np.int32)
-            t_label = np.zeros(step_num, dtype=np.int32)
+            t_corpus = np.zeros(step_num, dtype=np.int8)
+            t_pos = np.zeros(step_num, dtype=np.int8)
+            t_label = np.zeros(step_num, dtype=np.int8)
             line_c = self.corpus[i]
             seq_length = len(line_c)
             line_p = self.pos[i]

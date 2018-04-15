@@ -1,5 +1,5 @@
 # coding:utf-8
-from data_base.conll_reader.conll_dataset import Conll
+from data_base.conll_reader.conll_dataset import Conll, ConllExtend
 import params
 from data_base.VocabularyList import Vocabulary
 from nlp_modle.bi_directional_lstm.generate_data import GenerateData
@@ -24,6 +24,7 @@ def load_dict_from_file(dict_path, dict):
 
 def prepare_data(path, c_dict_path, p_dict_path, l_dict_path):
     data = Conll(path)
+
     corpus_dict = Vocabulary(vocabulary_size=30000)
     pos_dict = Vocabulary()
     label_dict = Vocabulary()
@@ -45,6 +46,8 @@ if __name__ == '__main__':
     (train_date, train_dict) = prepare_data(
         params.conll_train, params.conll_corpus_dict, params.conll_pos_dict, params.conll_label_dict)
     (test_data, test_dict) = prepare_data(
-        params.conll_testa, params.conll_corpus_dict, params.conll_pos_dict, params.conll_label_dict, False)
+        params.conll_testa, params.conll_corpus_dict, params.conll_pos_dict, params.conll_label_dict)
     # train_model.train_model(train_date, train_dict, test_data, test_dict, params.conll_model_path)
-    train_model.train_crf_model(train_date, test_data, train_dict, test_dict, params.conll_model_path)
+
+    seq = ConllExtend(params.conll_seq)
+    train_model.train_crf_model(train_date, test_data, train_dict, seq.corpus, params.conll_model_path, False)
