@@ -62,7 +62,7 @@ class CollectMetrics:
                      linewidth=2.5,
                      linestyle='-',
                      label='f1')
-        plt.legend(loc='lower right')
+        plt.legend(loc='lower rightz')
         if save_path is None:
             plt.show()
         else:
